@@ -10,7 +10,8 @@ class App extends Component {
 
     tasks: ['JavaScript', 'React JS ', 'Node.JS ']
   }
- 
+
+
   Deleting =(d) =>{
   
     const tasks = [...this.state.tasks]
