@@ -1,26 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import Header from './components/Header'
+import Submission from './components/Submission'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+class App extends Component {
+
+  state = {
+
+    tasks: ['JavaScript', 'React JS ', 'Node.JS ']
+  }
+ 
+  Deleting =(d) =>{
+  
+    const tasks = [...this.state.tasks]
+    tasks.splice(d ,1)
+    this.setState({ tasks :tasks })
+    alert("You have deleted " + this.state.tasks[d])
+  
+  
+  }
+  SubmitForm = (task) => {
+    this.setState({ tasks: [...this.state.tasks, task] });
+    alert("You have successfully add " + task)
+  };
+ 
+ render(){
+
+
+ return(
+
+
+    <div className='wrapper'>
+      <div className='card_frame'>
+        <br/><br/>
+        <Header number_Todos={this.state.tasks.length} />
+        <TodoList tasks={this.state.tasks} OnDeletion = {this.Deleting}/>
+        <Submission onFormSubmit={this.SubmitForm}/>
+          </div>
+    </div>        
+
+ )
+ }
+
+}
+
+
+
+const TodoList = (props) => {
+
+
+  const todos = props.tasks.map((a , index) => {
+    return <Todo content={a} key={index}  id={index} OnDeletion={props.OnDeletion} />
+  })
+
+
+  return( 
+    <div className='list-wrapper'>
+    {todos}
     </div>
   );
 }
 
-export default App;
+
+
+const Todo = (props) => {
+
+  return(
+    <div className='list-item'>
+      {props.content}
+      <button id="delete" onClick ={() => {props.OnDeletion(props.id)}}   >DELETE</button>
+    </div>
+  );
+}
+
+export default App
+
+

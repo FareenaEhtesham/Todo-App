@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+form {
+  display: flex;
+  padding: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.wrapper {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"%3E%3Cpath fill="%239C92AC" fill-opacity="0.4" d="M1 3h1v1H1V3zm2-2h1v1H3V1z"%3E%3C/path%3E%3C/svg%3E');
+}
+.card_frame{
+  background-color: rgb(228, 226, 226);
+  width: 50%;
+  height: 50vh;
+  text-align: center;
+}
+.input {
+  margin-right: 10px;
+}
+.frame {
+  width: 40vw;
+  max-width: 400px;
+}
+.header {
+  display: inline;
+  text-align: center;
+}
+.list-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+#delete{
+  background-color: red;
   color: white;
+  width: 13%;
+  height: 5vh;
+  margin-left: 7%;
+
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.list-item{
+  line-height: 3rem;
 }
