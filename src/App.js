@@ -2,16 +2,29 @@ import React,{Component} from 'react';
 import Header from './components/Header'
 import Submission from './components/Submission'
 import './App.css';
-
+import Search from './components/Search'
 
 class App extends Component {
 
   state = {
 
-    tasks: ['JavaScript', 'React JS ', 'Node.JS ']
+    tasks: ['JavaScript', 'React JS ', 'Node.JS '],
+    searched :''
   }
  
-  Deleting =(d) =>{
+ 
+  SubmitForm = (task) => {
+    this.setState({ tasks: [...this.state.tasks, task] });
+    alert("You have successfully add " + task)
+  };
+ 
+ render(){
+
+  const Filter_Books = this.state.tasks.filter(a =>
+    a.toLowerCase().includes(this.state.searched.toLowerCase())
+  );
+
+  const Deleting =(d) =>{
   
     const tasks = [...this.state.tasks]
     tasks.splice(d ,1)
@@ -20,12 +33,6 @@ class App extends Component {
   
   
   }
-  SubmitForm = (task) => {
-    this.setState({ tasks: [...this.state.tasks, task] });
-    alert("You have successfully add " + task)
-  };
- 
- render(){
 
 
  return(
@@ -35,7 +42,8 @@ class App extends Component {
       <div className='card_frame'>
         <br/><br/>
         <Header number_Todos={this.state.tasks.length} />
-        <TodoList tasks={this.state.tasks} OnDeletion = {this.Deleting}/>
+        <TodoList tasks={Filter_Books} OnDeletion = {Deleting}/>
+        <Search changing={e => this.setState({searched: e.target.value })} />
         <Submission onFormSubmit={this.SubmitForm}/>
           </div>
     </div>        
@@ -44,8 +52,6 @@ class App extends Component {
  }
 
 }
-
-
 
 const TodoList = (props) => {
 
