@@ -11,9 +11,16 @@ class App extends Component {
     tasks: ['JavaScript', 'React JS ', 'Node.JS '],
     searched :''
   }
-<<<<<<< HEAD
  
- 
+  Deleting =(d) =>{
+  
+    const tasks = [...this.state.tasks]
+    tasks.splice(d ,1)
+    this.setState({ tasks :tasks })
+    alert("You have deleted " + this.state.tasks[d])
+  
+  
+  }
   SubmitForm = (task) => {
     this.setState({ tasks: [...this.state.tasks, task] });
     alert("You have successfully add " + task)
@@ -25,21 +32,6 @@ class App extends Component {
     a.toLowerCase().includes(this.state.searched.toLowerCase())
   );
 
-  const Deleting =(d) =>{
-=======
-
-
-  Deleting =(d) =>{
->>>>>>> 78abff002f6b48bdfcacf79052cf89a28310050f
-  
-    const tasks = [...this.state.tasks]
-    tasks.splice(d ,1)
-    this.setState({ tasks :tasks })
-    alert("You have deleted " + this.state.tasks[d])
-  
-  
-  }
-
 
  return(
 
@@ -48,7 +40,7 @@ class App extends Component {
       <div className='card_frame'>
         <br/><br/>
         <Header number_Todos={this.state.tasks.length} />
-        <TodoList tasks={Filter_Books} OnDeletion = {Deleting}/>
+        <TodoList tasks={Filter_Books} OnDeletion = {this.Deleting}/>
         <Search changing={e => this.setState({searched: e.target.value })} />
         <Submission onFormSubmit={this.SubmitForm}/>
           </div>
@@ -58,6 +50,8 @@ class App extends Component {
  }
 
 }
+
+
 
 const TodoList = (props) => {
 
